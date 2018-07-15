@@ -2,11 +2,11 @@
 
 namespace Nadia\Bundle\FrameworkExtraBundle\EventListener;
 
-use AppBundle\Configuration\ModalView;
+use Nadia\Bundle\FrameworkExtraBundle\Configuration\ModalView;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Handles the ModalView annotation for actions.
