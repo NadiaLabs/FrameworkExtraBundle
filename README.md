@@ -11,7 +11,7 @@ Install with composer:
 $ composer require nadialabs/framework-extra-bundle
 ```
 
-Resister bundle, include it in your Kernel class:
+Register bundle, include it in your Kernel class:
 
 ```php
 public function registerBundles()
@@ -37,7 +37,7 @@ Setup template name with different request formats (`_format` attribute in a Req
  */
 ```
 
-The `@ViewSwitch` annotation has two properties:
+The `@ViewSwitch` annotation has two variables:
 
 - format: `_format` attribute in a Request instance
 - view: twig template name
@@ -57,7 +57,6 @@ class DefaultController extends Controller
      *
      * @Route("/create.{_format}", name="create", requirements={"_format":"html|modal.html"}, defaults={"_format":"html"})
      * @Route("/edit/{id}.{_format}", name="edit", requirements={"id":"\d+", "_format":"html|modal.html"}, defaults={"_format":"html"})
-     * @Method({"GET", "POST"})
      *
      * @ViewSwitch(format="html", view="default/edit.html.twig")
      * @ViewSwitch(format="modal.html", view="default/edit-modal.html.twig")
