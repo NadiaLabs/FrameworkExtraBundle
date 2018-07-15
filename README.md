@@ -26,6 +26,7 @@ A complete example as below:
 ```php
 // Controller/DefaultController.php
 class DefaultController extends Controller
+{
     /**
      * @param Request $request
      * @param int $id
