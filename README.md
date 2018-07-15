@@ -3,6 +3,28 @@ NadiaFrameworkExtraBundle
 
 This bundle extends SensioFrameworkExtraBundle, provides more ways to configure your controllers with annotations.
 
+## Installation
+
+Install with composer:
+
+```bash
+$ composer require nadialabs/framework-extra-bundle
+```
+
+Resister bundle, include it in your Kernel class:
+
+```php
+public function registerBundles()
+{
+    $bundles = [
+        // ...
+
+        new Nadia\Bundle\FrameworkExtraBundle\NadiaFrameworkExtraBundle(),
+    ];
+
+    // ...
+}
+```
 
 ## @ViewSwitch Annotation
 
