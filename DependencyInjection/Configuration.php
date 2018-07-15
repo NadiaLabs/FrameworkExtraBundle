@@ -20,7 +20,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->arrayNode('modal')
+                ->arrayNode('view_switch')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->booleanNode('annotations')->defaultTrue()->end()

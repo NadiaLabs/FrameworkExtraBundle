@@ -5,14 +5,14 @@ namespace Nadia\Bundle\FrameworkExtraBundle\Configuration;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationInterface;
 
 /**
- * The ModalView class handles the ModalView annotation parts.
+ * The ViewSwitch class handles the ViewSwitch annotation parts.
  *
  * @Annotation
  */
-class ModalView implements ConfigurationInterface
+class ViewSwitch implements ConfigurationInterface
 {
     /**
-     * Modal constructor.
+     * ViewSwitch constructor.
      *
      * @param array $values
      */
@@ -37,32 +37,17 @@ class ModalView implements ConfigurationInterface
     private $view;
 
     /**
-     * The modal view name.
+     * The format value for request attribute: "_format"
      *
      * @var string
      */
-    private $modalView;
+    private $format;
 
     /**
-     * Modal format name for request attribute: "_format"
-     *
-     * @var bool
-     */
-    private $format = 'modal.html';
-
-    /**
-     * Get template for view rendering
-     *
-     * @param string $format The request's "_format" attribute value
-     *
      * @return string
      */
-    public function getTemplate($format)
+    public function getView()
     {
-        if ($format === $this->format) {
-            return $this->modalView;
-        }
-
         return $this->view;
     }
 
@@ -75,11 +60,11 @@ class ModalView implements ConfigurationInterface
     }
 
     /**
-     * @param string $modalView
+     * @return string
      */
-    public function setModalView($modalView)
+    public function getFormat()
     {
-        $this->modalView = $modalView;
+        return $this->format;
     }
 
     /**
@@ -95,7 +80,7 @@ class ModalView implements ConfigurationInterface
      */
     public function getAliasName()
     {
-        return 'modal_view';
+        return 'view_switch';
     }
 
     /**
@@ -103,6 +88,6 @@ class ModalView implements ConfigurationInterface
      */
     public function allowArray()
     {
-        return false;
+        return true;
     }
 }

@@ -1,0 +1,5 @@
+services:
+    nadia_framework_extra.view_switch.listener:
+        class: Nadia\Bundle\FrameworkExtraBundle\EventListener\ViewSwitchListener
+        arguments: ['@twig']
+        tags: ['kernel.event_subscriber']

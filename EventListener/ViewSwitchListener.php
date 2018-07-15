@@ -2,18 +2,18 @@
 
 namespace Nadia\Bundle\FrameworkExtraBundle\EventListener;
 
-use Nadia\Bundle\FrameworkExtraBundle\Configuration\ModalView;
+use Nadia\Bundle\FrameworkExtraBundle\Configuration\ViewSwitch;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * Handles the ModalView annotation for actions.
+ * Handles the ViewSwitch annotation for actions.
  *
  * Depends on pre-processing of the Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener.
  */
-class ModalViewListener implements EventSubscriberInterface
+class ViewSwitchListener implements EventSubscriberInterface
 {
     /**
      * @var \Twig_Environment
@@ -21,7 +21,7 @@ class ModalViewListener implements EventSubscriberInterface
     private $twig;
 
     /**
-     * ModalViewListener constructor.
+     * ViewSwitchListener constructor.
      *
      * @param \Twig_Environment|null $twig
      */
@@ -40,20 +40,30 @@ class ModalViewListener implements EventSubscriberInterface
     public function onKernelView(GetResponseForControllerResultEvent $event)
     {
         $request = $event->getRequest();
-        $modalView = $request->attributes->get('_modal_view');
+        $switches = $request->attributes->get('_view_switch');
+        $view = null;
 
-        if (!$modalView instanceof ModalView) {
+        foreach ($switches as $switch) {
+            if (!$switch instanceof ViewSwitch) {
+                return;
+            }
+            if ($request->getRequestFormat() === $switch->getFormat()) {
+                $view = $switch->getView();
+                break;
+            }
+        }
+
+        if (null === $view) {
             return;
         }
 
         if (null === $this->twig) {
-            throw new \LogicException('You can not use the "@ModalView" annotation if the Twig Bundle is not available.');
+            throw new \LogicException('You can not use the "@ViewSwitch" annotation if the Twig Bundle is not available.');
         }
 
         $parameters = $event->getControllerResult();
-        $template = $modalView->getTemplate($request->getRequestFormat());
 
-        $event->setResponse(new Response($this->twig->render($template, $parameters)));
+        $event->setResponse(new Response($this->twig->render($view, $parameters)));
     }
 
     /**

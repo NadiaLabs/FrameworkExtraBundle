@@ -26,8 +26,8 @@ class NadiaFrameworkExtraExtension extends Extension
 
         $configFilesToLoad = [];
 
-        if ($config['modal']['annotations']) {
-            $configFilesToLoad[] = 'modal.yml';
+        if ($config['view_switch']['annotations']) {
+            $configFilesToLoad[] = 'view_switch.yml';
         }
 
         if (count($configFilesToLoad)) {
