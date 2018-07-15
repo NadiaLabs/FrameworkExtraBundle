@@ -1,0 +1,5 @@
+services:
+    sensio_framework_extra.controller.listener:
+        class: Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener
+        arguments: ['@annotation_reader']
+        tags: ['kernel.event_subscriber']

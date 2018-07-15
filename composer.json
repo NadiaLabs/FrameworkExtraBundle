@@ -1,0 +1,34 @@
+{
+    "name": "nadialabs/framework-extra-bundle",
+    "type": "symfony-bundle",
+    "description": "Yet another framework extra bundle",
+    "keywords": ["modal", "modal-view", "bootstrap", "symfony", "bundle", "nadia", "nadialabs"],
+    "homepage": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leo",
+            "homepage": "https://github.com/LeoOnTheEarth"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Nadia\\Bundle\\FrameworkExtraBundle\\": ""
+        }
+    },
+    "require": {
+        "sensio/framework-extra-bundle": "^5.0.0",
+        "symfony/config": "^3.3|^4.0",
+        "symfony/http-foundation": "^3.3|^4.0",
+        "symfony/http-kernel": "^3.3|^4.0",
+        "symfony/event-dispatcher": "^3.3|^4.0"
+    },
+    "require-dev": {
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "minimum-stability": "dev"
+}

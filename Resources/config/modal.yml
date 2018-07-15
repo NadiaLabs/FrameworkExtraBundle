@@ -1,0 +1,5 @@
+services:
+    nadia_framework_extra.view.modal_view_listener:
+        class: Nadia\Bundle\FrameworkExtraBundle\EventListener\ModalViewListener
+        arguments: ['@twig']
+        tags: ['kernel.event_subscriber']
