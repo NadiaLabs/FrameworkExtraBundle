@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "Yet another framework extra bundle",
     "keywords": ["modal", "modal-view", "bootstrap", "symfony", "bundle", "nadia", "nadialabs"],
-    "homepage": "",
+    "homepage": "https://github.com/NadiaLabs/FrameworkExtraBundle",
     "license": "MIT",
     "authors": [
         {
